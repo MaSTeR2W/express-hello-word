@@ -7,7 +7,7 @@ const error = require("./../utilities/error");
 
 const appOptionController = require("./../controllers/appOptionController");
 const authController = require("./../controllers/authController");
-const queryHandler = require("./../handlers/queryhandler");
+const queryHandler = require("./../handlers/queryHandler");
 const imageHandler = require("./../handlers/imageHandler");
 
 router.get("/bestSellingProducts" , queryHandler.validatePageNumber , catchAsync(async(req , res , next)=>{
