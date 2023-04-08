@@ -15,6 +15,7 @@ const {
   aesEncrypt,
   aesDecrypt,
   randomString,
+  randomNumbers,
 } = require("./../utilities/myCrypto");
 const {
   validatePassword,
@@ -187,7 +188,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   signupBody.salt = randomString(128);
   signupBody.createdAt = new Date(Date.now() + 1000);
-  signupBody.vCode = randomString(10, true);
+  signupBody.vCode = randomNumbers(10);
   signupBody.vCodeExp = new Date(Date.now() + 1000 * 61 * 5);
   signupBody.lastVCode = new Date(Date.now() + 1000);
 
@@ -338,7 +339,7 @@ exports.regenerateVCode = catchAsync(async (req, res, next) => {
   const body = {};
 
   body.lastVCode = new Date();
-  body.vCode = randomString(10);
+  body.vCode = randomNumbers(10);
   body.vCodeExp = new Date(Date.now() + 1000 * 60 * 5);
 
   await checkVCodeLimit(user, body, req);
@@ -377,7 +378,7 @@ exports.resetPassword1st = catchAsync(async (req, res, next) => {
     throw new error(`حساب ${user[0].status}`, 127, 405, true);
 
   const rePassBody = {
-    vCode: randomString(10),
+    vCode: randomNumbers(10),
     vCodeExp: new Date(Date.now() + 1000 * 60 * 5),
     lastVCode: new Date(),
   };
