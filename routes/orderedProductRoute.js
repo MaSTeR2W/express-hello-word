@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router({mergeParams: true});
 
-const authController = require("./../controllers/authCOntroller");
+const authController = require("./../controllers/authController");
 const orderedProductController = require("./../controllers/orderedProductController");
 const orderController = require("./../controllers/orderController");
 
