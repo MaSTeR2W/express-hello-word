@@ -1,4 +1,4 @@
-const appOptionhandler = require("./handlers/appOPtionHandler");
+const appOptionhandler = require("./handlers/appOptionHandler");
 
 appOptionhandler.createOptionIfNotExist();
 
