@@ -16,8 +16,8 @@ const options = {
 
 mysqlHandler.createConnection(options);
 
-app.listen(3000, () => {
-  console.log("server is listening on port 3000");
+app.listen(7567, () => {
+  console.log("server is listening on port 7567");
 });
 
 process.on("unhandledRejection", (err) => {
