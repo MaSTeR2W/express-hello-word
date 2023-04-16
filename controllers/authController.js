@@ -126,6 +126,16 @@ exports.login = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     userId: user[0].userId,
+    userName: user[0].userName,
+    createdAt: user[0].createdAt,
+    phoneNumber: user[0].phoneNumber,
+    image: user[0].image,
+    city: user[0].city,
+    position: user[0].position,
+    nearestPosition: user[0].nearestPosition,
+    gps: user[0].gps,
+    currentOrders: user[0].currentOrders,
+    type: user[0].type
   });
 });
 
