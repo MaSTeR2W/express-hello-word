@@ -336,10 +336,7 @@ exports.getUsers = catchAsync(async (req, res, next) => {
 });
 
 exports.getUser = catchAsync(async (req, res, next) => {
-  if (
-    req.user[0].userType == "مستخدم" &&
-    req.user[0].userId != req.params.userId
-  ) {
+  if (req.user[0].type == "مستخدم" && req.user[0].userId != req.params.userId) {
     throw new error("ليس لديك الصلاحية للولوج", 2500, 403, true, false);
   }
   const user = await User.selectOne(
