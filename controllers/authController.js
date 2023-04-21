@@ -135,7 +135,7 @@ exports.login = catchAsync(async (req, res, next) => {
     nearestPosition: user[0].nearestPosition,
     gps: user[0].gps,
     currentOrders: user[0].currentOrders,
-    type: user[0].type
+    type: user[0].type,
   });
 });
 
@@ -198,7 +198,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   signupBody.salt = randomString(128);
   signupBody.createdAt = new Date(Date.now() + 1000);
-  signupBody.vCode = randomNumbers(10);
+  signupBody.vCode = randomNumbers(6);
   signupBody.vCodeExp = new Date(Date.now() + 1000 * 61 * 5);
   signupBody.lastVCode = new Date(Date.now() + 1000);
 
@@ -349,7 +349,7 @@ exports.regenerateVCode = catchAsync(async (req, res, next) => {
   const body = {};
 
   body.lastVCode = new Date();
-  body.vCode = randomNumbers(10);
+  body.vCode = randomNumbers(6);
   body.vCodeExp = new Date(Date.now() + 1000 * 60 * 5);
 
   await checkVCodeLimit(user, body, req);
@@ -388,7 +388,7 @@ exports.resetPassword1st = catchAsync(async (req, res, next) => {
     throw new error(`حساب ${user[0].status}`, 127, 405, true);
 
   const rePassBody = {
-    vCode: randomNumbers(10),
+    vCode: randomNumbers(6),
     vCodeExp: new Date(Date.now() + 1000 * 60 * 5),
     lastVCode: new Date(),
   };
