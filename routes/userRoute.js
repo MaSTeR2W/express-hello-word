@@ -25,6 +25,10 @@ router.delete(
   userController.deleteUser
 );
 
+router.use("/:userId", paramsHandler.validateId("userId"));
+
+router.get("/:userId", userController.getUser);
+
 router.use("/", authController.permissionTo("مسؤول", "مشرف"));
 
 router.get(
@@ -40,10 +44,6 @@ router.post(
   userController.createUser,
   imageHandler.resizeImage
 );
-
-router.use("/:userId", paramsHandler.validateId("userId"));
-
-router.get("/:userId", userController.getUser);
 
 router.patch("/:userId", userController.editUser);
 
